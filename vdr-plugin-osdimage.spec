@@ -14,6 +14,7 @@ URL:		http://brougs78.vdr-developer.org/vdr.htm
 Source:		vdr-%plugin-%version.tar.bz2
 Patch1:		http://deela.cc.fh-lippe.de/files/vdr-osdimage/vdr-1.3.18-osdimage-0.1.2.patch
 Patch2:		vdr-osdimage-0.1.2-gcc41.patch
+BuildRoot:	%{_tmppath}/%{name}-buildroot
 BuildRequires:	vdr-devel >= 1.4.1-6
 Requires:	vdr-abi = %vdr_abi
 BuildRequires:	libMagick-devel
