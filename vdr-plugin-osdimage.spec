@@ -38,7 +38,7 @@ param="-d PICTURE_DIR"
 %vdr_plugin_params_end
 
 %build
-VDR_PLUGIN_FLAGS="%vdr_plugin_flags $(pkg-config --cflags Magick++)"
+VDR_PLUGIN_FLAGS="%vdr_plugin_flags $(pkg-config --cflags ImageMagick++)"
 %vdr_plugin_build HAVE_NETPBM=1
 
 %install
