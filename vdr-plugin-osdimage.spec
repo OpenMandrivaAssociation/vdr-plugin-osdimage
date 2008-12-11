@@ -18,7 +18,7 @@ Patch3:		osdimage-0.1.2-i18n-1.6.patch
 BuildRoot:	%{_tmppath}/%{name}-buildroot
 BuildRequires:	vdr-devel >= 1.6.0
 Requires:	vdr-abi = %vdr_abi
-BuildRequires:	libMagick-devel
+BuildRequires:	imagemagick-devel
 BuildRequires:	netpbm-devel
 
 %description
