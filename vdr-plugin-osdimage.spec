@@ -2,7 +2,7 @@
 %define plugin	osdimage
 %define name	vdr-plugin-%plugin
 %define version	0.1.2
-%define rel	19
+%define rel	20
 
 Summary:	VDR plugin: OSD Image Viewer
 Name:		%name
