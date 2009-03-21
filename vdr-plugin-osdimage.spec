@@ -15,6 +15,7 @@ Source:		vdr-%plugin-%version.tar.bz2
 Patch1:		http://deela.cc.fh-lippe.de/files/vdr-osdimage/vdr-1.3.18-osdimage-0.1.2.patch
 Patch2:		vdr-osdimage-0.1.2-gcc41.patch
 Patch3:		osdimage-0.1.2-i18n-1.6.patch
+Patch4:		osdimage-pkgconfig.patch
 BuildRoot:	%{_tmppath}/%{name}-buildroot
 BuildRequires:	vdr-devel >= 1.6.0
 Requires:	vdr-abi = %vdr_abi
@@ -29,6 +30,7 @@ Plugin for VDR that allows viewing pictures on the OSD.
 %patch1 -p4 -b .1318
 %patch2 -p0 -b .gcc41
 %patch3 -p1
+%patch4 -p1
 %vdr_plugin_prep
 
 %vdr_plugin_params_begin %plugin
