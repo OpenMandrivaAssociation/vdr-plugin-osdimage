@@ -17,7 +17,7 @@ Patch2:		vdr-osdimage-0.1.2-gcc41.patch
 Patch3:		osdimage-0.1.2-i18n-1.6.patch
 Patch4:		osdimage-pkgconfig.patch
 BuildRoot:	%{_tmppath}/%{name}-buildroot
-BuildRequires:	vdr-devel >= 1.6.0
+BuildRequires:	vdr-devel >= 1.6.0-7
 Requires:	vdr-abi = %vdr_abi
 BuildRequires:	imagemagick-devel
 BuildRequires:	netpbm-devel
@@ -40,7 +40,7 @@ param="-d PICTURE_DIR"
 %vdr_plugin_params_end
 
 %build
-VDR_PLUGIN_FLAGS="%vdr_plugin_flags $(pkg-config --cflags ImageMagick++)"
+VDR_PLUGIN_EXTRA_FLAGS="$(pkg-config --cflags ImageMagick++)"
 %vdr_plugin_build HAVE_NETPBM=1
 
 %install
