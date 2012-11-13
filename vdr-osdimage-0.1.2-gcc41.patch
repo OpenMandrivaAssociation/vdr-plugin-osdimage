@@ -1,0 +1,40 @@
+Index: menu.h
+===================================================================
+--- menu.h
++++ menu.h	2006-07-15 21:01:18.000000000 +0200
+@@ -32,12 +32,12 @@
+    cOSDImageMenu(sFiles &pics);
+ 	~cOSDImageMenu();
+ 
+-	//void cOSDImageMenu::Show();
+-	eOSState cOSDImageMenu::ProcessKey(eKeys Key);
++	//void Show();
++	eOSState ProcessKey(eKeys Key);
+ 	
+-	bool cOSDImageMenu::ScanDir(eScanMode scan);
++	bool ScanDir(eScanMode scan);
+ 	
+-	void cOSDImageMenu::View(char *selectItem = NULL);
++	void View(char *selectItem = NULL);
+ 	
+ 	//void SetShowMenu(bool status) { showMenu = status; }
+ 	//bool GetShowMenu(void) { return showMenu; }
+Index: viewer.h
+===================================================================
+--- viewer.h
++++ viewer.h	2006-07-15 20:59:35.000000000 +0200
+@@ -31,10 +31,10 @@
+ 	~cOSDImageViewer();
+ 	virtual void Show();
+ 	virtual eOSState ProcessKey(eKeys Key);
+-	void cOSDImageViewer::Load(void);
+-	void cOSDImageViewer::ViewPicture(void);
+-	void cOSDImageViewer::ViewBackground(void);
+-	void cOSDImageViewer::ViewInfo(const char *info = "");
++	void Load(void);
++	void ViewPicture(void);
++	void ViewBackground(void);
++	void ViewInfo(const char *info = "");
+ 	
+ private:
+ 	cOsd *osd;

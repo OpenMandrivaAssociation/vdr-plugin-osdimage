@@ -1,0 +1,13 @@
+Index: osdimage-0.1.2/Makefile
+===================================================================
+--- osdimage-0.1.2/Makefile
++++ osdimage-0.1.2/Makefile	2009-03-21 11:44:37.000000000 +0200
+@@ -50,7 +50,7 @@
+ -include $(VDRDIR)/Make.config
+ 
+ # Add Magick++-linker-info
+-LIBS += $(shell Magick++-config --ldflags --libs)
++LIBS += $(shell pkg-config --libs ImageMagick++)
+ 
+ ifdef HAVE_NETPBM
+ 	DEFINES += -DHAVE_NETPBM
