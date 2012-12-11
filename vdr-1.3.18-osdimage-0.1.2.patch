@@ -1,0 +1,107 @@
+--- VDR.org/PLUGINS/src/osdimage-0.1.2/bitmap.c	2004-11-02 10:07:52.000000000 +0100
++++ VDR/PLUGINS/src/osdimage-0.1.2/bitmap.c	2005-01-09 16:01:19.000000000 +0100
+@@ -74,7 +74,7 @@
+ 	int h = Height();
+ 	int wNew, hNew;
+ #ifdef DEBUG
+-	int time = time_ms(), dt;
++	int time = cTimeMs::Now(), dt;
+ #endif
+ 
+ 	
+@@ -109,7 +109,7 @@
+ 		}
+ 
+ #ifdef DEBUG
+-	dt = time_ms() - time;
++	dt = cTimeMs::Now() - time;
+ 	printf("\t- Resizing & quantization (using %s): %dms\n", quantizer == 0 ? "ImageMagick" : "Netpbm", dt);
+ #endif
+
+--- VDR.org/PLUGINS/src/osdimage-0.1.2/menu.c	2004-11-02 10:22:07.000000000 +0100
++++ VDR/PLUGINS/src/osdimage-0.1.2/menu.c	2005-01-09 16:04:29.000000000 +0100
+@@ -169,8 +169,9 @@
+ 	FILE *p;
+ 	char buf[256];
+ 	bool ret;
++	cReadLine reader;
+ #ifdef DEBUG
+-	int time = time_ms(), dt;
++	int time = cTimeMs::Now(), dt;
+ #endif
+ 				
+ 	
+@@ -200,7 +201,7 @@
+ 
+ 		if (p)
+ 		{
+-			while ( (line = readline(p) ) !=  NULL)
++			while ( (line = reader.Read(p) ) !=  NULL)
+ 			{
+ 				if (strcmp(line, myPics->CurPath() ) > 0)
+ 				{
+@@ -246,7 +247,7 @@
+ 
+ 	if (p)
+ 	{
+-		while ( (line = readline(p) ) !=  NULL)
++		while ( (line = reader.Read(p) ) !=  NULL)
+ 		{
+ 			strcpy(buf, line + strlen(myPics->CurPath() ) + 1);
+ 			myPics->files.push_back(buf);
+@@ -263,7 +264,7 @@
+ 	}
+ 
+ #ifdef DEBUG
+-	dt = time_ms() - time;
++	dt = cTimeMs::Now() - time;
+ 	printf("Generating file-list & sorting it: %dms\n", dt);
+ #endif
+
+--- VDR.org/PLUGINS/src/osdimage-0.1.2/viewer.c	2004-11-28 20:01:27.000000000 +0100
++++ VDR/PLUGINS/src/osdimage-0.1.2/viewer.c	2005-01-09 16:01:19.000000000 +0100
+@@ -249,7 +249,7 @@
+ 				break;
+ 			case kBlue:
+ 				slideShow = !slideShow;
+-				slideShowTime = time_ms();
++				slideShowTime = cTimeMs::Now();
+ 				break;
+ 			case kBack:
+ 				slideShow = false;
+@@ -261,7 +261,7 @@
+ 			case kNone:
+ 				if (slideShow)
+ 				{
+-					slideShowDelta = (time_ms() - slideShowTime) / 1000; // [ms]->[s]
++					slideShowDelta = (cTimeMs::Now() - slideShowTime) / 1000; // [ms]->[s]
+ 
+ 					if (slideShowDelta >= OSDImageSetup.slideShowDelay)
+ 					{
+@@ -272,7 +272,7 @@
+ 							ViewInfo(tr("Loading") );
+ 							Load();
+ 
+-							slideShowTime = time_ms();
++							slideShowTime = cTimeMs::Now();
+ 							break;
+ 						}
+ 						else
+@@ -311,7 +311,7 @@
+ void cOSDImageViewer::Load(void)
+ {
+ #ifdef DEBUG
+-	int time = time_ms(), dt;
++	int time = cTimeMs::Now(), dt;
+ #endif
+ 
+ 
+@@ -319,7 +319,7 @@
+ 	image.Load(myPics->CurPicPath() );
+ 
+ #ifdef DEBUG
+-	dt = time_ms() - time;
++	dt = cTimeMs::Now() - time;
+ 	printf("Viewing picture %d/%d: '%s'\n", myPics->curPic + 1, myPics->Size(), myPics->CurPicPath() );
+ 	printf("\t- Loading: %dms\n", dt);
+ #endif
