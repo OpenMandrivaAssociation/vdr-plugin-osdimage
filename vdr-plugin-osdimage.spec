@@ -2,7 +2,7 @@
 %define plugin	osdimage
 %define name	vdr-plugin-%plugin
 %define version	0.1.2
-%define rel	22
+%define rel	23
 
 Summary:	VDR plugin: OSD Image Viewer
 Name:		%name
@@ -16,7 +16,6 @@ Patch1:		http://deela.cc.fh-lippe.de/files/vdr-osdimage/vdr-1.3.18-osdimage-0.1.
 Patch2:		vdr-osdimage-0.1.2-gcc41.patch
 Patch3:		osdimage-0.1.2-i18n-1.6.patch
 Patch4:		osdimage-pkgconfig.patch
-BuildRoot:	%{_tmppath}/%{name}-buildroot
 BuildRequires:	vdr-devel >= 1.6.0-7
 Requires:	vdr-abi = %vdr_abi
 BuildRequires:	imagemagick-devel
@@ -44,17 +43,7 @@ VDR_PLUGIN_EXTRA_FLAGS="$(pkg-config --cflags ImageMagick++)"
 %vdr_plugin_build HAVE_NETPBM=1
 
 %install
-rm -rf %{buildroot}
 %vdr_plugin_install
-
-%clean
-rm -rf %{buildroot}
-
-%post
-%vdr_plugin_post %plugin
-
-%postun
-%vdr_plugin_postun %plugin
 
 %files -f %plugin.vdr
 %defattr(-,root,root)
